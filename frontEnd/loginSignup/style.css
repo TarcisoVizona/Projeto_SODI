@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.esq {
+  height: 100vh;
+  width: 50vw;
+  background-color: aqua;
+}
+
+.dir {
+  height: 100vh;
+  width: 50vw;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+img {
+    height: 100vh;
+}
