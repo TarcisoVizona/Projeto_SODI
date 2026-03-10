@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="root">
+    <main>
       <header>
         <div id="divLogosodi">
           <img src="../icons/sodiLogo.png" alt="" id="logo" />
@@ -18,45 +18,65 @@
           </div>
         </div>
       </header>
-      <div class="servicos">
-        <p>Teste</p>
-      </div>
-      <div id="divFormbutton">
+      <nav>
+        <!-- <p id="osN">OS</p>
+        <p id="mN">MANUAIS</p> -->
+      </nav>
+      <article id="divFormbuttons">
         <div id="formulario">
           <h2 id="tFormulario">Formulário OS</h2>
+
           <div id="divInputs">
+            <select name="" id="idMaq"></select>
             <input
               type="text"
+              placeholder="Status..."
               class="inputs"
-              placeholder="Mecânico responsável..."
+              id="statusMaq"
             />
             <input
               type="text"
+              placeholder="Ano da Máquina..."
               class="inputs"
-              placeholder="Número serial da máquina..."
+              id="anoMaq"
+            />
+
+            <input
+              type="text"
+              class="inputs"
+              placeholder="Descrição..."
+              id="descMaq"
+            />
+            <input
+              type="text"
+              placeholder="Marca..."
+              class="inputs"
+              id="marcaMaq"
+            />
+            <input
+              type="text"
+              placeholder="Mecânico responsável..."
+              class="inputs"
+              id="mecanicoMaq"
             />
             <input
               type="text"
               class="inputs"
               placeholder="Modelo da máquina..."
+              id="modeloMaq"
             />
-            <input type="text" class="inputs" placeholder="Descrição..." />
+            <input type="date" class="inputs" id="dataMaq" />
+          </div>
+          <div id="divButtons">
+            <button id="buttonS">SALVAR</button>
+            <button id="buttonC">CANCELAR</button>
           </div>
         </div>
-        <div id="buttonsDiv">
-          <button id="buttonNo">
-            <p>CRIAR NOVA ORDEM</p>
-          </button>
-          <button id="buttonS">
-            <p>SALVAR</p>
-          </button>
-          <button id="buttonC">
-            <p>CANCELAR</p>
-          </button>
-        </div>
-      </div>
+        <button id="buttonNo">CRIAR NOVA ORDEM</button>
+      </article>
+      <article id="servicos"></article>
       <footer></footer>
-    </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

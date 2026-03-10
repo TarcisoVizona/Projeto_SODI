@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "epxress": "^0.0.1-security",
+    "express": "^5.2.1",
+    "postgres": "^3.4.8"
+  }
+}
