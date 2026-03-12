@@ -35,16 +35,16 @@ routes.post("/cadastrarOS", async (req, res) => {
     data_abertura,
     descricao_problema,
     status,
-    id_maquina,
+    id_maquinas,
   } = req.body;
 
-  await sql`INSERT INTO ordensServico(nome_mecanico, data_abertura, descricao_problema, status, id_maquina) 
+  await sql`INSERT INTO ordensServico(nome_mecanico, data_abertura, descricao_problema, status, id_maquinas) 
   values(
   ${nome_mecanico},
   ${data_abertura},
   ${descricao_problema},
   ${status},
-  ${id_maquina}
+  ${id_maquinas}
   )`;
 
   return res.status(201).json("Produto criado!");
@@ -66,7 +66,7 @@ routes.post("/cadastroUser", async (req, res) => {
 });
 
 //login de usuario
-routes.post("/usuarios/login", async (req, res) => {
+routes.post("/loginUsuario", async (req, res) => {
   try {
     const { email_usuario, senha_usuario } = req.body;
     const usuario =
@@ -74,8 +74,10 @@ routes.post("/usuarios/login", async (req, res) => {
     if (usuario[0]) {
       return res.status(200).json(usuario[0]);
     }
+    return res.status(401).json({ message: "Email ou senha incorretos" });
   } catch (error) {
-    console.log(`Mensagem de erro: ` + error)
+    console.log(`Mensagem de erro: ` + error);
+    return res.status(400);
   }
 });
 

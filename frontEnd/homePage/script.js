@@ -3,6 +3,7 @@ const buttonNo = document.querySelector("#buttonNo");
 const buttonS = document.querySelector("#buttonS");
 const buttonC = document.querySelector("#buttonC");
 const formulario = document.querySelector("#formulario");
+const divTform = document.querySelector("#divTform")
 const servicos = document.querySelector("#servicos");
 const idMaq = document.querySelector("#idMaq");
 const modeloMaq = document.querySelector("#modeloMaq");
@@ -19,14 +20,17 @@ buttonNo.addEventListener("click", () => {
   buttonS.style.display = "flex";
   buttonC.style.display = "flex";
   formulario.style.display = "flex";
+  divTform.style.display = "flex"
 });
 
 //desabilitar formulário OS
 buttonC.addEventListener("click", () => {
   formulario.style.display = "none";
+  divTform.style.display = "none"
   buttonC.style.display = "none";
   buttonS.style.display = "none";
   buttonNo.style.display = "flex";
+  
 });
 
 //ordens de serviço
@@ -52,9 +56,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     id_ordem.textContent = `Ordem: ${ordem.id_ordem}`;
     divTitle.appendChild(id_ordem);
 
-    const id_maquina = document.createElement("h2");
-    id_maquina.textContent = `Número serial da máquina: ${ordem.id_maquina}`;
-    cardDiv.appendChild(id_maquina);
+    const id_maquinas = document.createElement("h2");
+    id_maquinas.textContent = `Número serial da máquina: ${ordem.id_maquinas}`;
+    cardDiv.appendChild(id_maquinas);
 
     const nome_mecanico = document.createElement("h2");
     nome_mecanico.textContent = `Mecânico responsável: ${ordem.nome_mecanico}`;
@@ -78,13 +82,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     // servicos.appendChild(divTitle);
     // servicos.appendChild(cardDiv);
   });
-
-  idMaq.innerHTML = "";
-  maquina.forEach((maquina) => {
-    idMaq.innerHTML += `
-      <option value="${maquina.id_maquina}">${maquina.id_maquina}</option>
-    `;
-  });
 });
 
 async function criarOrdem() {
@@ -92,14 +89,33 @@ async function criarOrdem() {
   const data_abertura = dataMaq.value;
   const descricao_problema = descMaq.value;
   const status = statusMaq.value;
-  const id_maquina = idMaq.value;
+  const id_maquinas = idMaq.value;
+
+  //validação de informações
+
+  if(nome_mecanico == '' || descricao_problema == '' || status == '' || id_maquinas == ''){
+    alert('Informações inválidas! tente novamente');
+    return;
+  }
+  
+  else if(nome_mecanico != NaN || descricao_problema != NaN || status != NaN){
+    alert('Informações inválidas! tente novamente');
+    return;
+  }
+
+  else if(id_maquinas == NaN){
+    alert('Informações inválidas! tente novamente');
+    return;
+  }
+
+  /////////////////////////
 
   console.log(
     nome_mecanico,
     data_abertura,
     descricao_problema,
     status,
-    id_maquina,
+    id_maquinas,
   );
 
   const resposta = await fetch("http://localhost:3000/cadastrarOS", {
@@ -112,7 +128,7 @@ async function criarOrdem() {
       data_abertura,
       descricao_problema,
       status,
-      id_maquina,
+      id_maquinas,
     }),
   });
 
