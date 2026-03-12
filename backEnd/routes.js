@@ -50,16 +50,33 @@ routes.post("/cadastrarOS", async (req, res) => {
   return res.status(201).json("Produto criado!");
 });
 
+//cadastrar novo usuario
 routes.post("/cadastroUser", async (req, res) => {
   try {
-    const infoUser = ({ email_usuario, senha_usuario } = req.body);
+    const { email_usuario, senha_usuario } = req.body;
     const cadUser =
       await sql`INSERT INTO usuario(email_usuario, senha_usuario) VALUES (${email_usuario}, ${senha_usuario})`;
     if (cadUser) {
-      return res.status(200).json(infoUser);
+      return res.status(200).json(cadUser);
     }
   } catch (error) {
     console.log(`Mensagem de erro: ` + error);
     return res.status(400);
   }
 });
+
+//login de usuario
+routes.post("/usuarios/login", async (req, res) => {
+  try {
+    const { email_usuario, senha_usuario } = req.body;
+    const usuario =
+      await sql`SELECT * FROM usuario WHERE email_usuario = ${email_usuario} AND senha_usuario = ${senha_usuario}`;
+    if (usuario[0]) {
+      return res.status(200).json(usuario[0]);
+    }
+  } catch (error) {
+    console.log(`Mensagem de erro: ` + error)
+  }
+});
+
+export default routes;
