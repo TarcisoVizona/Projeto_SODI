@@ -10,7 +10,7 @@ routes.get("/OS", async (req, res) => {
       return res.status(200).json(os);
     }
   } catch (error) {
-    console.log('Mensagem de erro: ' + error);
+    console.log("Mensagem de erro: " + error);
     return res.status(400);
   }
 });
@@ -19,11 +19,11 @@ routes.get("/OS", async (req, res) => {
 routes.get("/maquinas", async (req, res) => {
   try {
     const maquinas = await sql`SELECT * FROM maquinas`;
-    if(maquinas) {
+    if (maquinas) {
       return res.status(200).json(maquinas);
     }
   } catch (error) {
-    console.log('Mensagem de erro: ' + error)
+    console.log("Mensagem de erro: " + error);
     return res.status(400);
   }
 });
@@ -35,9 +35,9 @@ routes.post("/cadastrarOS", async (req, res) => {
     data_abertura,
     descricao_problema,
     status,
-    id_maquina
+    id_maquina,
   } = req.body;
- 
+
   await sql`INSERT INTO ordensServico(nome_mecanico, data_abertura, descricao_problema, status, id_maquina) 
   values(
   ${nome_mecanico},
@@ -50,4 +50,16 @@ routes.post("/cadastrarOS", async (req, res) => {
   return res.status(201).json("Produto criado!");
 });
 
-export default routes;
+routes.post("/cadastroUser", async (req, res) => {
+  try {
+    const infoUser = ({ email_usuario, senha_usuario } = req.body);
+    const cadUser =
+      await sql`INSERT INTO usuario(email_usuario, senha_usuario) VALUES (${email_usuario}, ${senha_usuario})`;
+    if (cadUser) {
+      return res.status(200).json(infoUser);
+    }
+  } catch (error) {
+    console.log(`Mensagem de erro: ` + error);
+    return res.status(400);
+  }
+});
