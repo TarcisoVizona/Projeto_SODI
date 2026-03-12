@@ -1,19 +1,43 @@
-<!doctype html>
-<html lang="BR-pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main class="conteudo">
-      <div class="esq"></div>
-      <div class="dir">
-        <div class="cir">
-            <img id="verde" src="circulo certo.png" alt="circulos">
+<DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Operaciona LOGIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <article>
+            <div id="click">
+                <p id="login">Login</p>
+                <p id="Sign_up">Sign Up</p>
+            </div>
+            <div id="escrever">
+                <div class="campo">
+                    <img src="perfil.png" class="icone">
+                    <input type="text" placeholder="Insira seu email" required>
+                </div>
+                <div class="campo">
+                    <img src="cadeado.png" class="icone">
+                    <input type="password" placeholder="Insira sua senha" required>
+                </div>
+                <div class="campo" id="senha">
+                    <img src="cadeado.png" class="icone2">
+                    <input type="password" placeholder="Confirme a senha">
+                </div>
+                <button id="enviar">Entrar</button>
+            </div>
+        </article>
+        <div id="fundo_verde">
+            <img id="verde" src="fundoverde.png">
         </div>
-      </div>
+        <div id="logo">
+            <img src="logo.png" id="logo_img" height="350px">
+        </div>
     </main>
-  </body>
+    <script src="./script.js"></script>
+</body>
 </html>
